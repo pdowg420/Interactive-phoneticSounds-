@@ -1,0 +1,52 @@
+body {
+    background-image: url('../images/background.png');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+/* Basic styling for the chart buttons and highlights */
+.chart-button {
+    display: inline-block;
+    margin: 5px; /* Match script margin */
+    padding: 15px; /* Match script padding */
+    background-color: lightgray;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+/* Add your highlighting style here */
+.chart-button.highlighted {
+    background-color: yellow; /* or any color you prefer */
+}
+
+#follow-along {
+    margin-top: 20px; /* Match script margin */
+    padding: 10px; /* Match script padding */
+    background-color: #f9f9f9; /* Fixed typo */
+    border: 1px solid #ddd;
+}
+
+.play-button {
+    font-size: 20px; /* Match script font size */
+    padding: 10px; /* Match script padding */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.play-button:hover {
+    background-color: #45a049;
+}
+
+/* Small button styling */
+.small-button {
+    font-size: 16px; /* Adjust as needed */
+    padding: 5px 10px; /* Adjust as needed */
+    border-radius: 4px; /* Adjust as needed */
+}
