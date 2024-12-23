@@ -87,7 +87,6 @@ function handleButtonClick(button, soundFile) {
         button.classList.remove('highlighted');
     });
     button.classList.add('highlighted');
-
     const clone = button.cloneNode(true);
     clone.dataset.soundFile = soundFile;
     clone.classList.remove('highlighted');
