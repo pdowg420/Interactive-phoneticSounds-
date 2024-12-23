@@ -11,7 +11,8 @@ const phoneticSounds = {
         "ɘ": "sounds/sound_ɘ.mp3",
         "ii": "sounds/sound_ii.mp3",
         "ɔ": "sounds/sound_ɔ.mp3",
-        "u": "sounds/sound_u.mp3,
+        "u": "sounds/sound_u.mp3",
+        "ʊ": "sounds/sound_ʊ.mp3",
     },
     consonants: {
         "b": "sounds/sound_b.mp3",
