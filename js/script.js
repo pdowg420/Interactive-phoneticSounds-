@@ -6,6 +6,7 @@ const phoneticSounds = {
         "ei": "sounds/sound_ei.mp3
         "i": "sounds/sound_i.mp3",
         "ii": "sounds/sound_ii.mp3",
+        "e": "sounds/sound_e.mp3",
         "ai": "sounds/sound_ai.mp3",
         "o": "sounds/sound_o.mp3",
         "u": "sounds/sound_u.mp3",
