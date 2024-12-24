@@ -3,7 +3,7 @@ const phoneticSounds = {
         "ae": "sounds/sound_ae.mp3",
         "ɔ": "sounds/sound_ɔ.mp3",
         "a": "sounds/sound_a.mp3",
-        "ei": "sounds/sound_ei.mp3
+        "ei": "sounds/sound_ei.mp3",
         "i": "sounds/sound_i.mp3",
         "ii": "sounds/sound_ii.mp3",
         "e": "sounds/sound_e.mp3",
@@ -25,10 +25,11 @@ const phoneticSounds = {
     },
     consonants: {
         "b": "sounds/sound_b.mp3",
+        "p": "sounds/sound_p.mp3",
         "d": "sounds/sound_d.mp3",
         "f": "sounds/sound_f.mp3",
         "g": "sounds/sound_g.mp3",
-        "h": "sounds/sound_h.mp3"
+        "h": "sounds/sound_h.mp3",
     }
 };
 
