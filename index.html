@@ -3,68 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Phonetic Chart</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Interactive Phonetic Sounds</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
+            background-image: url('../images/background.png');
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-repeat: no-repeat;
+            background-position: center;
         }
+
         h2 {
-            color: #333;
+            margin-top: 20px;
         }
-        .chart-container {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
+
+        /* Basic styling for the chart buttons and highlights */
         .chart-button {
-            padding: 10px;
-            margin: 5px;
-            border: 1px solid #007BFF;
-            background-color: #fff;
-            color: #007BFF;
+            display: inline-block;
+            margin: 5px; /* Match script margin */
+            padding: 15px; /* Match script padding */
+            background-color: lightgray;
+            border: 1px solid #ddd;
             cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s, color 0.3s;
         }
-        .chart-button:hover {
-            background-color: #007BFF;
-            color: #fff;
+
+        /* Add your highlighting style here */
+        .chart-button.highlighted {
+            background-color: yellow; /* or any color you prefer */
         }
-        .highlighted {
-            background-color: yellow;
+
+        #follow-along {
+            margin-top: 20px; /* Match script margin */
+            padding: 10px; /* Match script padding */
+            background-color: #f9f9f9; /* Fixed typo */
+            border: 1px solid #ddd;
         }
+
         .play-button {
-            margin: 10px 0;
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: #fff;
+            font-size: 20px; /* Match script font size */
+            padding: 10px; /* Match script padding */
+            background-color: #4CAF50;
+            color: white;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s;
         }
+
         .play-button:hover {
-            background-color: #218838;
+            background-color: #45a049;
         }
+
+        /* Small button styling */
         .small-button {
-            padding: 5px 10px;
-            background-color: #6c757d;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            margin: 5px;
-            transition: background-color 0.3s;
-        }
-        .small-button:hover {
-            background-color: #5a6268;
+            font-size: 16px; /* Adjust as needed */
+            padding: 5px 10px; /* Adjust as needed */
+            border-radius: 4px; /* Adjust as needed */
         }
     </style>
 </head>
 <body>
+    <!-- Your HTML content here -->
+    <div id="follow-along"></div>
+    <button id="clear-chart-button">Clear Chart</button>
+    <button id="space-button">Space</button>
+    <div id="vowel-sounds"></div>
+    <div id="consonant-sounds"></div>
+
+    <script>
+        async function setElementStyles(element, styles) {
+            Object.assign(element.style, styles);
+        }
+
+        const followAlongContainer = document.createElement('div');
+        followAlongContainer.id = 'follow-along-container';
+        const followAlongChart = document.getElementById('follow-along');
+        const clearChartButton = document.getElementById('clear-chart-button');
+        const spaceButton = document.getElementById('space-button');
+        followAlongContainer.appendChild(followAlongChart);
+        followAlongContainer.appendChild(clearChartButton);
+        followAlongContainer.appendChild(spaceButton);
+        document.body.appendChild(followAlongContainer);
+
+        const soundsContainer = document.createElement('div');
+        soundsContainer.id = 'sounds-container';
+        const vowelSounds = document.getElementById('vowel-sounds');
+        const consonantSounds = document.getElementById('consonant-sounds');
+        soundsContainer.appendChild(vowelSounds);
+        soundsContainer.appendChild(consonantSounds);
+        document.body.appendChild(soundsContainer);
+
+        await setElementStyles(followAlongContainer, { width: '50%', float: 'right', border: '2px solid blue', padding: '10px', backgroundColor: 'lightblue' });
+        await setElementStyles(soundsContainer, { width: '50%', float: 'left', border: '2px solid red', padding: '10px', backgroundColor: 'lightcoral' });
+
+        const data = {
+            followAlongContainerId: followAlongContainer.id,
+            soundsContainerId: soundsContainer.id,
+            followAlongChartParentId: followAlongChart.parentElement.id,
+            clearChartButtonParentId: clearChartButton.parentElement.id,
+            spaceButtonParentId: spaceButton.parentElement.id,
+            vowelSoundsParentId: vowelSounds.parentElement.id,
+            consonantSoundsParentId: consonantSounds.parentElement.id
+        };
+    </script>
+</body>
+</html>
+
     <button id="start-button" class="play-button">Start</button>
     <div id="vowel-sounds">
         <h2>Vowel Sounds</h2>
