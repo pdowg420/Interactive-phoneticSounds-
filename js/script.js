@@ -39,6 +39,9 @@ const phoneticSounds = {
         "z": "sounds/sound_z.mp3",
         "r": "sounds/sound_r.mp3",
         "j": "sounds/sound_j.mp3",
+        "t": "sounds/sound_t.mp3",
+        "y": "sounds/sound_y.mp3",
+        "w": "sounds/sound_w.mp3",
     }
 };
 
