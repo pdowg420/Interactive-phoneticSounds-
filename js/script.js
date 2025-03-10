@@ -1,8 +1,8 @@
 const phoneticSounds = {
     vowels: {
         "ae": "sounds/sound_ae.mp3",
-        "ɔ": "sounds/sound_ɔ.mp3",
-        "a": "sounds/sound_a.mp3",
+        "a": "sounds/sound_ɔ.mp3",
+        "c": "sounds/sound_a.mp3",
         "ei": "sounds/sound_ei.mp3",
         "i": "sounds/sound_i.mp3",
         "ii": "sounds/sound_ii.mp3",
