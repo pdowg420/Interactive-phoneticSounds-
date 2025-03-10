@@ -34,7 +34,7 @@ const phoneticSounds = {
         "l": "soounds/sound_l.mp3",
         "m": "sounds/sound_m.mp3",
         "n": "sounds/sound_n.mp3",
-        "th": "sounds/sounds_th.mp3",
+        "θ": "sounds/sounds_θ.mp3",
         "ð": "sounds/sound_ð.mp3",
         "s": "sounds/sound_s.mp3",
         "z": "sounds/sound_z.mp3",
