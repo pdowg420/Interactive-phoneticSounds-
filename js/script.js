@@ -21,8 +21,7 @@ const phoneticSounds = {
         "ɔɝ": "sounds/sound_aɝ.mp3",
         "aɝ": "sounds/sound_aɝ.mp3",
         "ju": "sounds/sound_ju.mp3",
-        "wɔ": "sounds/sound_wɔ.mp3",
-        "wɘ": "sounds/sound_wɘ.mp3",
+
                 
     },
     consonants: {
@@ -45,6 +44,11 @@ const phoneticSounds = {
         "y": "sounds/sound_y.mp3",
         "w": "sounds/sound_w.mp3",
         "ŋ": "sounds/sound_ŋ.mp3",
+        "ʃ": "sounds/sound_ʃ.mp3",
+        "tʃ": "sounds/sound_tʃ.mp3",
+        "Ʒ": "sounds/sound_Ʒ.mp3",
+        "ʤ": "sounds/sound_ʤ.mp3",
+        
     }
 };
 
