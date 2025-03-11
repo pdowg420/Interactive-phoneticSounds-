@@ -50,6 +50,23 @@ const phoneticSounds = {
         "ʤ": "sounds/sound_ʤ.mp3" // 45
     }
 };
+const chartContainer = document.getElementById("chart");
+
+Object.entries(phoneticSounds).forEach(([category, sounds]) => {
+    const categoryTitle = document.createElement("h2");
+    categoryTitle.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+    chartContainer.appendChild(categoryTitle);
+
+    Object.entries(sounds).forEach(([symbol, details]) => {
+        const soundItem = document.createElement("div");
+        soundItem.innerHTML = `${details.number}. ${symbol} - <audio controls>
+                                <source src="${details.sound}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>`;
+        chartContainer.appendChild(soundItem);
+    });
+});
+
 let isPlaying = false; // Track if sounds are playing
 
 // Function to play a sound
