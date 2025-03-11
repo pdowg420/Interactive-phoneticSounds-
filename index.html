@@ -82,62 +82,57 @@
     <button id="clear-chart-button" onclick="clearFollowAlong()">Clear the Follow Along Chart</button>    
     <button id="space-button" class="small-button" onclick="addSpace()">Add Space</button>
     <script>
-        const phoneticSounds = {
-            vowels: {
-                "æ": "sounds/sound_æ.mp3",
-                "ɔ": "sounds/sound_ɔ.mp3",
-                "a": "sounds/sound_a.mp3",
-                "ei": "sounds/sound_ei.mp3",
-                "ii": "sounds/sound_ii.mp3",
-                "e": "sounds/sound_e.mp3",
-                "ai": "sounds/sound_ai.mp3",
-                "o": "sounds/sound_o.mp3",
-                "u": "sounds/sound_u.mp3",
-                "ɘ": "sounds/sound_ɘ.mp3",
-                "au": "sounds/sound_au.mp3",
-                "u": "sounds/sound_u.mp3",
-                "ʊ": "sounds/sound_ʊ.mp3",
-                "oi": "sounds/sound_oi.mp3",
-                "ɜ": "sounds/sound_ɜ.mp3",
-                "eɜ": "sounds/sound_eɜ.mp3",
-                "iɜ": "sounds/sound_iɜ.mp3",
-                "aɝ": "sounds/sound_aɝ.mp3",
-                "ɔɝ": "sounds/sound_ɔɝ.mp3",
-                "ju": "sounds/sound_ju.mp3",
-                "i": "sounds/sound_i.mp3",
-             
-
-
-            },
-            consonants: {
-                "b": "sounds/sound_b.mp3",
-                "p": "sounds/sound_p.mp3",
-                "d": "sounds/sound_d.mp3",
-                "f": "sounds/sound_f.mp3",
-                "v": "sounds/sound_v.mp3",
-                "g": "sounds/sound_g.mp3",
-                "k": "sounds/sound_k.mp3",
-                "h": "sounds/sound_h.mp3",
-                "l": "sounds/sound_l.mp3",
-                "m": "sounds/sound_m.mp3",
-                "n": "sounds/sound_n.mp3",
-                "θ": "sounds/sound_θ.mp3",
-                "ð": "sounds/sound_ð.mp3",
-                "s": "sounds/sound_s.mp3",
-                "z": "sounds/sound_z.mp3",
-                "r": "sounds/sound_r.mp3",
-                "j": "sounds/sound_j.mp3",
-                "t": "sounds/sound_t.mp3",
-                "y": "sounds/sound_y.mp3",
-                "w": "sounds/sound_w.mp3",
-                "ŋ": "sounds/sound_ŋ.mp3",
-                "ʃ": "sounds/sound_ʃ.mp3",
-                "tʃ": "sounds/sound_tʃ.mp3",
-                "Ʒ": "sounds/sound_Ʒ.mp3",
-                "ʤ": "sounds/sound_ʤ.mp3",
-        
-            }
-        };
+      const phoneticSounds = {
+    vowels: {
+        "æ": "sounds/sound_æ.mp3", // 1
+        "ɔ": "sounds/sound_ɔ.mp3", // 2
+        "a": "sounds/sound_a.mp3", // 3
+        "ei": "sounds/sound_ei.mp3", // 4
+        "ii": "sounds/sound_ii.mp3", // 5
+        "e": "sounds/sound_e.mp3", // 6
+        "ai": "sounds/sound_ai.mp3", // 7
+        "o": "sounds/sound_o.mp3", // 8
+        "u": "sounds/sound_u.mp3", // 9
+        "ɘ": "sounds/sound_ɘ.mp3", // 10
+        "au": "sounds/sound_au.mp3", // 11
+        "ʊ": "sounds/sound_ʊ.mp3", // 12
+        "oi": "sounds/sound_oi.mp3", // 13
+        "ɜ": "sounds/sound_ɜ.mp3", // 14
+        "eɜ": "sounds/sound_eɜ.mp3", // 15
+        "iɜ": "sounds/sound_iɜ.mp3", // 16
+        "aɝ": "sounds/sound_aɝ.mp3", // 17
+        "ɔɝ": "sounds/sound_ɔɝ.mp3", // 18
+        "ju": "sounds/sound_ju.mp3", // 19
+        "i": "sounds/sound_i.mp3" // 20
+    },
+    consonants: {
+        "b": "sounds/sound_b.mp3", // 1
+        "p": "sounds/sound_p.mp3", // 2
+        "d": "sounds/sound_d.mp3", // 3
+        "f": "sounds/sound_f.mp3", // 4
+        "v": "sounds/sound_v.mp3", // 5
+        "g": "sounds/sound_g.mp3", // 6
+        "k": "sounds/sound_k.mp3", // 7
+        "h": "sounds/sound_h.mp3", // 8
+        "l": "sounds/sound_l.mp3", // 9
+        "m": "sounds/sound_m.mp3", // 10
+        "n": "sounds/sound_n.mp3", // 11
+        "θ": "sounds/sound_θ.mp3", // 12
+        "ð": "sounds/sound_ð.mp3", // 13
+        "s": "sounds/sound_s.mp3", // 14
+        "z": "sounds/sound_z.mp3", // 15
+        "r": "sounds/sound_r.mp3", // 16
+        "j": "sounds/sound_j.mp3", // 17
+        "t": "sounds/sound_t.mp3", // 18
+        "y": "sounds/sound_y.mp3", // 19
+        "w": "sounds/sound_w.mp3", // 20
+        "ŋ": "sounds/sound_ŋ.mp3", // 21
+        "ʃ": "sounds/sound_ʃ.mp3", // 22
+        "tʃ": "sounds/sound_tʃ.mp3", // 23
+        "Ʒ": "sounds/sound_Ʒ.mp3", // 24
+        "ʤ": "sounds/sound_ʤ.mp3" // 25
+    }
+};
 
         let isPlaying = false; // Track if sounds are playing
 
