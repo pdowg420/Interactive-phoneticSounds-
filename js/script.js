@@ -48,33 +48,7 @@ const phoneticSounds = {
         "ʤ": "sounds/sound_ʤ.mp3"
     }
 };
-// Enable dragging on buttons
-function enableDragAndDrop(button) {
-    button.setAttribute('draggable', true);
-    button.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text', e.target.dataset.soundFile);
-        e.dataTransfer.setData('symbol', e.target.textContent);
-    });
-}
 
-// Handle drop event
-function handleDrop(event) {
-    event.preventDefault();
-    const soundFile = event.dataTransfer.getData('text');
-    const symbol = event.dataTransfer.getData('symbol');
-    if (soundFile && symbol) {
-        const droppedButton = document.createElement('button');
-        droppedButton.textContent = symbol;
-        droppedButton.dataset.soundFile = soundFile;
-        droppedButton.className = 'chart-button';
-        document.getElementById('follow-along').appendChild(droppedButton);
-    }
-}
-
-// Allow drop event
-function allowDrop(event) {
-    event.preventDefault();
-}
 let isPlaying = false;
 
 // Function to play a sound
@@ -102,6 +76,34 @@ function welcomeUser(name) {
     utterance.pitch = 1.2;
     utterance.rate = 1;
     speechSynthesis.speak(utterance);
+}
+
+// Enable dragging on buttons
+function enableDragAndDrop(button) {
+    button.setAttribute('draggable', true);
+    button.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text', e.target.dataset.soundFile);
+        e.dataTransfer.setData('symbol', e.target.textContent);
+    });
+}
+
+// Handle drop event
+function handleDrop(event) {
+    event.preventDefault();
+    const soundFile = event.dataTransfer.getData('text');
+    const symbol = event.dataTransfer.getData('symbol');
+    if (soundFile && symbol) {
+        const droppedButton = document.createElement('button');
+        droppedButton.textContent = symbol;
+        droppedButton.dataset.soundFile = soundFile;
+        droppedButton.className = 'chart-button';
+        document.getElementById('follow-along').appendChild(droppedButton);
+    }
+}
+
+// Allow drop event
+function allowDrop(event) {
+    event.preventDefault();
 }
 
 // Function to create a phonetic button
