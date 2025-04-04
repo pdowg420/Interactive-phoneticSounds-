@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,81 +11,289 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             background-color: #f9f9f9;
-        }
-        h2 {
             color: #333;
         }
+
+        h1,
+        h2 {
+            color: #2d2d2d;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         .chart-container {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 10px;
+            justify-content: center;
         }
+
         .chart-button {
-            padding: 10px;
+            padding: 12px;
             margin: 5px;
             border: 1px solid #007BFF;
             background-color: #fff;
             color: #007BFF;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 6px;
+            text-align: center;
+            width: 70px;
+            font-weight: bold;
             transition: background-color 0.3s, color 0.3s;
         }
+
         .chart-button:hover {
             background-color: #007BFF;
             color: #fff;
         }
+
         .highlighted {
-            background-color: yellow;
+            background-color: #ffeb3b;
         }
-        .play-button {
-            margin: 10px 0;
-            padding: 10px 15px;
+
+        .play-button,
+        .small-button {
+            padding: 10px 20px;
             background-color: #28a745;
             color: #fff;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 6px;
             transition: background-color 0.3s;
         }
-        .play-button:hover {
+
+        .play-button:hover,
+        .small-button:hover {
             background-color: #218838;
         }
-        .small-button {
-            padding: 5px 10px;
-            background-color: #6c757d;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            margin: 5px;
-            transition: background-color 0.3s;
+
+        .clear-button {
+            margin-top: 20px;
+            background-color: #dc3545;
         }
-        .small-button:hover {
+
+        .clear-button:hover {
+            background-color: #c82333;
+        }
+
+        .space-button {
+            background-color: #6c757d;
+        }
+
+        .space-button:hover {
             background-color: #5a6268;
         }
-        #follow-along {
-            border: 2px dashed #000;
-            min-height: 100px;
+
+        .instructions {
+            background-color: #f8f9fa;
             padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .instructions h2 {
+            margin-top: 0;
         }
     </style>
 </head>
+
 <body>
-    <button id="start-button" class="play-button">Start</button>
+
+    <div class="header">
+        <h1>Interactive Phonetic Chart</h1>
+        <button id="start-button" class="play-button">Start</button>
+    </div>
+
+    <div class="instructions">
+        <h2>Instructions:</h2>
+        <p>Click on the phonetic symbols to hear the sound. You can add your selections to the follow-along chart and play them together. Enjoy learning phonetics!</p>
+    </div>
+
     <div id="vowel-sounds">
         <h2>Vowel Sounds</h2>
         <div class="chart-container"></div>
     </div>
+
     <div id="consonant-sounds">
         <h2>Consonant Sounds</h2>
         <div class="chart-container"></div>
     </div>
+
     <div id="follow-along">
         <h2>Follow Along Chart</h2>
         <button class="play-button small-button" onclick="playSelectedSounds()">Play Selected Sounds</button>
+        <div id="dynamic-content"></div>
     </div>
-    <button id="clear-chart-button" class="small-button" onclick="clearFollowAlong()">Clear Follow Along Chart</button>    
-    <button id="space-button" class="small-button" onclick="addSpace()">Add Space</button>
-    <script src="js/script.js"></script>
+
+    <button id="clear-chart-button" class="clear-button" onclick="clearFollowAlong()">Clear Follow Along Chart</button>
+    <button id="space-button" class="space-button small-button" onclick="addSpace()">Add Space</button>
+
+    <script>
+        const phoneticSounds = {
+            vowels: {
+                "æ": "sounds/sound_æ.mp3",
+                "ɔ": "sounds/sound_ɔ.mp3",
+                "a": "sounds/sound_a.mp3",
+                "ei": "sounds/sound_ei.mp3",
+                "ii": "sounds/sound_ii.mp3",
+                "e": "sounds/sound_e.mp3",
+                "ai": "sounds/sound_ai.mp3",
+                "o": "sounds/sound_o.mp3",
+                "u": "sounds/sound_u.mp3",
+                "ɘ": "sounds/sound_ɘ.mp3",
+                "au": "sounds/sound_au.mp3",
+                "ʊ": "sounds/sound_ʊ.mp3",
+                "oi": "sounds/sound_oi.mp3",
+                "ɝ": "sounds/sound_ɜ.mp3",
+                "eɜ": "sounds/sound_eɜ.mp3",
+                "iɜ": "sounds/sound_iɜ.mp3",
+                "aɝ": "sounds/sound_aɝ.mp3",
+                "ɔɝ": "sounds/sound_ɔɝ.mp3",
+                "ju": "sounds/sound_ju.mp3",
+                "i": "sounds/sound_i.mp3"
+            },
+            consonants: {
+                "b": "sounds/sound_b.mp3",
+                "p": "sounds/sound_p.mp3",
+                "d": "sounds/sound_d.mp3",
+                "f": "sounds/sound_f.mp3",
+                "v": "sounds/sound_v.mp3",
+                "g": "sounds/sound_g.mp3",
+                "k": "sounds/sound_k.mp3",
+                "h": "sounds/sound_h.mp3",
+                "l": "sounds/sound_l.mp3",
+                "m": "sounds/sound_m.mp3",
+                "n": "sounds/sound_n.mp3",
+                "θ": "sounds/sound_θ.mp3",
+                "ð": "sounds/sound_ð.mp3",
+                "s": "sounds/sound_s.mp3",
+                "z": "sounds/sound_z.mp3",
+                "r": "sounds/sound_r.mp3",
+                "j": "sounds/sound_j.mp3",
+                "t": "sounds/sound_t.mp3",
+                "w": "sounds/sound_w.mp3",
+                "ŋ": "sounds/sound_ŋ.mp3",
+                "ʃ": "sounds/sound_ʃ.mp3",
+                "tʃ": "sounds/sound_tʃ.mp3",
+                "Ʒ": "sounds/sound_Ʒ.mp3",
+                "ʤ": "sounds/sound_ʤ.mp3"
+            }
+        };
+
+        let isPlaying = false;
+
+        function playSound(filePath) {
+            console.log(`DEBUG: Attempting to play sound from: ${filePath}`);
+            const audio = new Audio(filePath);
+            return audio.play().then(() => {
+                console.log(`DEBUG: Playing sound from: ${filePath}`);
+            }).catch((error) => {
+                console.error(`ERROR: Could not play sound: ${filePath}`, error);
+                alert(`Failed to play sound from ${filePath}. Please check the file.`);
+            });
+        }
+
+        function getUserName() {
+            const name = prompt("Please enter your name:");
+            if (name) welcomeUser(name);
+        }
+
+        function welcomeUser(name) {
+            const welcomeMessage = `Welcome, ${name}! Enjoy your interactive phonetic chart.`;
+            const welcomeLabel = document.createElement('h2');
+            welcomeLabel.textContent = welcomeMessage;
+            document.body.prepend(welcomeLabel);
+            const utterance = new SpeechSynthesisUtterance(welcomeMessage);
+            utterance.pitch = 1.2;
+            utterance.rate = 1;
+            speechSynthesis.speak(utterance);
+            const startButton = document.getElementById('start-button');
+            if (startButton) startButton.style.display = 'none';
+        }
+
+        function createButton(symbol, soundFile, container) {
+            const button = document.createElement('div');
+            button.className = 'chart-button';
+            button.textContent = `/${symbol}/`;
+            button.onclick = () => handleButtonClick(button, soundFile);
+            container.appendChild(button);
+        }
+
+        function handleButtonClick(button, soundFile) {
+            playSound(soundFile);
+            button.classList.add('highlighted');
+            const clone = button.cloneNode(true);
+            clone.dataset.soundFile = soundFile;
+            clone.classList.remove('highlighted');
+            document.getElementById('follow-along').appendChild(clone);
+        }
+
+        function clearFollowAlong() {
+            const followAlongDiv = document.getElementById('follow-along');
+            if (followAlongDiv) {
+                followAlongDiv.innerHTML = '<h2>Follow Along Chart</h2><button class="play-button small-button" onclick="playSelectedSounds()">Play Selected Sounds</button>';
+            }
+        }
+
+        function clearHighlightedButtons() {
+            const buttons = document.querySelectorAll('.chart-button');
+            buttons.forEach(btn => btn.classList.remove('highlighted'));
+        }
+
+        async function playSelectedSounds() {
+            if (isPlaying) return;
+            isPlaying = true;
+            const buttons = document.querySelectorAll('#follow-along .chart-button');
+            for (const button of buttons) {
+                const soundFile = button.dataset.soundFile;
+                await playSound(soundFile);
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+            isPlaying = false;
+        }
+
+        function addSpace() {
+            const spaceElement = document.createElement('div');
+            spaceElement.className = 'chart-button';
+            spaceElement.textContent = ' ';
+            document.getElementById('follow-along').appendChild(spaceElement);
+        }
+
+        function init() {
+            const startButton = document.getElementById('start-button');
+            if (startButton) {
+                startButton.addEventListener('click', () => {
+                    getUserName();
+                    const vowelSoundsDiv = document.querySelector('#vowel-sounds .chart-container');
+                    const consonantSoundsDiv = document.querySelector('#consonant-sounds .chart-container');
+                    if (vowelSoundsDiv) {
+                        for (const [symbol, soundFile] of Object.entries(phoneticSounds.vowels)) {
+                            createButton(symbol, soundFile, vowelSoundsDiv);
+                        }
+                    }
+                    if (consonantSoundsDiv) {
+                        for (const [symbol, soundFile] of Object.entries(phoneticSounds.consonants)) {
+                            createButton(symbol, soundFile, consonantSoundsDiv);
+                        }
+                    }
+                });
+
+                const clearChartButton = document.getElementById('clear-chart-button');
+                if (clearChartButton) {
+                    clearChartButton.addEventListener('click', clearHighlightedButtons);
+                }
+            }
+        }
+
+        window.onload = init;
+    </script>
+
 </body>
+
 </html>
