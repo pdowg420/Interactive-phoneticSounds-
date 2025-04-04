@@ -78,42 +78,11 @@ function welcomeUser(name) {
     speechSynthesis.speak(utterance);
 }
 
-// Enable dragging on buttons
-function enableDragAndDrop(button) {
-    button.setAttribute('draggable', true);
-    button.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text', e.target.dataset.soundFile);
-        e.dataTransfer.setData('symbol', e.target.textContent);
-    });
-}
-
-// Handle drop event
-function handleDrop(event) {
-    event.preventDefault();
-    const soundFile = event.dataTransfer.getData('text');
-    const symbol = event.dataTransfer.getData('symbol');
-    if (soundFile && symbol) {
-        const droppedButton = document.createElement('button');
-        droppedButton.textContent = symbol;
-        droppedButton.dataset.soundFile = soundFile;
-        droppedButton.className = 'chart-button';
-        document.getElementById('follow-along').appendChild(droppedButton);
-    }
-}
-
-// Allow drop event
-function allowDrop(event) {
-    event.preventDefault();
-}
-
 // Function to create a phonetic button
 function createButton(symbol, soundFile, container) {
-    const button = document.createElement('div');
-    button.className = 'chart-button';
+    const button = document.createElement('button');
     button.textContent = `/${symbol}/`;
-    button.dataset.soundFile = soundFile;
     button.onclick = () => handleButtonClick(button, soundFile);
-    enableDragAndDrop(button); // Enable drag and drop
     container.appendChild(button);
 }
 
@@ -187,13 +156,6 @@ function init() {
         if (clearChartButton) {
             clearChartButton.addEventListener('click', clearHighlightedButtons);
         }
-    }
-
-    // Add event listeners for drag and drop on follow-along div
-    const followAlongDiv = document.getElementById('follow-along');
-    if (followAlongDiv) {
-        followAlongDiv.addEventListener('dragover', allowDrop);
-        followAlongDiv.addEventListener('drop', handleDrop);
     }
 }
 
