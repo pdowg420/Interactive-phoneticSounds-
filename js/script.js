@@ -106,9 +106,12 @@ function welcomeUser(name) {
 
 // Function to create a phonetic button
 function createButton(symbol, soundFile, container) {
-    const button = document.createElement('button');
+    const button = document.createElement('div');
+    button.className = 'chart-button';
     button.textContent = `/${symbol}/`;
+    button.dataset.soundFile = soundFile;
     button.onclick = () => handleButtonClick(button, soundFile);
+    enableDragAndDrop(button); // Enable drag and drop
     container.appendChild(button);
 }
 
@@ -182,6 +185,13 @@ function init() {
         if (clearChartButton) {
             clearChartButton.addEventListener('click', clearHighlightedButtons);
         }
+    }
+
+    // Add event listeners for drag and drop on follow-along div
+    const followAlongDiv = document.getElementById('follow-along');
+    if (followAlongDiv) {
+        followAlongDiv.addEventListener('dragover', allowDrop);
+        followAlongDiv.addEventListener('drop', handleDrop);
     }
 }
 
